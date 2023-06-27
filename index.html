@@ -5,80 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabla de Productos</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        
-        th {
-            background-color: #dddddd;
-        }
-
-        @media screen and (max-device-width:830px){
-	
-                table {
-                    width:100%;
-                }
-                 tr{
-                    display:flex;
-                    flex-direction:column;
-                    border:1px solid #507C80;
-                    padding:1em;
-                    margin-bottom:1em;
-                    margin-left:0.01em;                                        
-                }
-                
-                thead{
-                         display:none;
-                }
-                
-                td[data-titulo]{           
-                     display:flex;
-                }                
-                 td[data-titulo]::before{
-                                content:attr(data-titulo);
-                                width:100px;
-                }
-                 tr{
-                    display:flex;
-                    flex-direction:column;
-                    padding:1em;
-                    margin-bottom:1em;
-                    margin-left:0.01em;                                        
-                }      
-            }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    
 </head>
 <body>
-    <h1>Tabla de Productos</h1>
+    <h1>Lista De Mercado</h1>
     <table>
         <thead>
             <tr>
-                <th>Nombre Producto</th>
-                <th>Unidad Producto</th>
-                <th>Cantidad Producto</th>
-                <th>Comprar</th>
-                <th>Estado</th>
+                <th>Descripción:</th>
+                <th>Unidad:</th>              
+                <th>Comprar:</th>
+                <th>Estado:</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>Producto 1</td>
-                <td>Unidad 1</td>
-                <td>10</td>
-                <td>si</td>
-                <td>Pendiente</td>
-            </tr>
-           git 
-            <!-- Añade más filas según sea necesario -->
+        <tbody>           
         </tbody>
     </table>
+    <script src="main.js"></script>
 </body>
 </html>

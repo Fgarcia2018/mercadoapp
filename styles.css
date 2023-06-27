@@ -1,0 +1,36 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #dddddd;
+}
+
+.estado-producto-pendiente{
+    background-color: red;
+}
+.estado-producto-ok{
+    background-color:green;
+}
+@media screen and (max-device-width:830px){
+
+        table {
+            width:100%;
+        }
+         tr{
+            display:grid;
+            grid-template-columns: 1fr 1fr;        
+            border:1px solid #507C80;
+            padding:1em;
+            margin-bottom:1em;
+            margin-left:0.01em;                                        
+        }
+        thead{
+                 display:none;
+        }
+    }
