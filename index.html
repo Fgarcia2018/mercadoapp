@@ -10,7 +10,14 @@
 </head>
 <body>
     <h1>Lista De Mercado</h1>
-    <table>
+    <img src="assets/345386-200.svg" alt="menu icon" id="btn-menu-mobile">
+    <section class="menu-mercado inactive">
+        <ul>
+            <li id="opc-alimentos">Alimentos</li>
+            <li id="opc-aseo">Aseo</li>          
+        </ul>
+    </section>
+    <table class="tabla-alimentos">
         <thead>
             <tr>
                 <th>Descripción:</th>
@@ -19,7 +26,19 @@
                 <th>Estado:</th>
             </tr>
         </thead>
-        <tbody>           
+        <tbody id="tbody-alimentos">           
+        </tbody>
+    </table>
+    <table class="tabla-aseo inactive">
+        <thead>
+            <tr>
+                <th>Descripción:</th>
+                <th>Unidad:</th>              
+                <th>Comprar:</th>
+                <th>Estado:</th>
+            </tr>
+        </thead>
+        <tbody id="tbody-aseo">           
         </tbody>
     </table>
     <script src="main.js"></script>
