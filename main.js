@@ -86,8 +86,10 @@ function mostrarListaArticulos(lista,nomLista){
     celdaDescripcion.innerText=producto.descripcion     
     encabezadoComprar.innerText='Comprar'
     celdaComprar.innerText=producto.comprar
+    celdaComprar.style.color='green' 
     encabezadoEstado.innerText='Estado'
-    celdaEstado.innerText=producto.estado    
+    celdaEstado.innerText=producto.estado
+    celdaEstado.style.color='red'    
     
       celdaEstado.addEventListener('click',()=>{
         if (celdaEstado.innerText==='Pendiente'){
@@ -101,9 +103,11 @@ function mostrarListaArticulos(lista,nomLista){
 
       celdaComprar.addEventListener('click',()=>{
         if (celdaComprar.innerText==='Si'){
-          celdaComprar.innerText='No'         
+          celdaComprar.innerText='No'  
+          celdaComprar.style.color='red'          
         }else{
-          celdaComprar.innerText='Si'          
+          celdaComprar.innerText='Si' 
+          celdaComprar.style.color='green'         
         }        
       })
   }

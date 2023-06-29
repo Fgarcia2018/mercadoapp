@@ -8,6 +8,10 @@ h1{
     text-align: center;
 }
 
+.instrucciones{
+    font-size: 20px;
+}
+
 table {
     border-collapse: collapse;
     width: 100%;
@@ -43,6 +47,7 @@ td img{
     background-color: white;
     padding: 35px 20px;
     border: 1px solid;
+    border-radius: 68px 0px 70px 0px;
     
 }
 
