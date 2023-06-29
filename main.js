@@ -115,6 +115,8 @@ function mostrarTablaAlimentos(){
         tablaAlimentos.classList.remove('inactive')
         tablaAseo.classList.add('inactive')
         menuMobile.classList.add('inactive')
+    }else{
+      menuMobile.classList.add('inactive')
     }
 }
 
@@ -126,13 +128,15 @@ function mostrarTablaAseo(){
           tablaAlimentos.classList.add('inactive')
           menuMobile.classList.add('inactive')
          
-      } 
+      } else{
+        menuMobile.classList.add('inactive')
+      }
  }
 
 function mostrarMenuMobile(){
     menuMobile.classList.toggle('inactive')
-    tablaAlimentos.classList.add('inactive')
-    tablaAseo.classList.add('inactive')
+    // tablaAlimentos.classList.add('inactive')
+    // tablaAseo.classList.add('inactive')
 }
 
 window.addEventListener('load',mostrarListaArticulos(listaAlimentos,'alimentos'))

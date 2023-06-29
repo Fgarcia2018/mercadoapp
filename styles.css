@@ -1,8 +1,11 @@
 body{
     /* background-color: #AC4425; */
     background-image:url('assets/marjan-blan-5Ft4NWTmeJE-unsplash.jpg');
-    font-family: 'Caveat', cursive;
-   
+    font-family: 'Caveat', cursive;   
+}
+
+h1{
+    text-align: center;
 }
 
 table {
@@ -31,6 +34,14 @@ td img{
     padding: 0 20px;
     margin: 24px 0 0;
     text-align: center;
+}
+
+.menu-mercado{
+    position: absolute;
+    width: 58%;
+    background-color: white;
+    padding: 35px 0px;
+    border: 1px solid;
 }
 
 .menu-mercado li{
