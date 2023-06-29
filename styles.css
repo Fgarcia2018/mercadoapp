@@ -1,3 +1,10 @@
+body{
+    /* background-color: #AC4425; */
+    background-image:url('assets/marjan-blan-5Ft4NWTmeJE-unsplash.jpg');
+    font-family: 'Caveat', cursive;
+   
+}
+
 table {
     border-collapse: collapse;
     width: 100%;
@@ -7,19 +14,17 @@ th, td {
     padding: 8px;
     text-align: left;
 }
-th {
-    background-color: #dddddd;
+td img{
+    width: 30px;
+    height: 30px;
+   
 }
-
-.estado-producto-pendiente{
-    background-color: red;
-}
-.estado-producto-ok{
-    background-color:green;
-}
-
 .inactive{
     display: none;
+}
+
+.menu-mercado h3{
+    text-align: center;
 }
 .menu-mercado ul{
     list-style:  none;
@@ -29,8 +34,7 @@ th {
 }
 
 .menu-mercado li{
-    border: 2px solid green;   
-    border-radius: 5px; 
+    font-size: 20px;
     margin-top: 15px;
     align-self: center;
 
@@ -45,13 +49,17 @@ th {
         table {
             width:100%;
         }
+        td, th{
+            border:none;
+            padding: 0px;
+        }
          tr{
             display:grid;
             grid-template-columns: 1fr 1fr;        
-            border:1px solid #507C80;
+            /* border:1px solid #507C80; */
             padding:1em;
-            margin-bottom:1em;
-            margin-left:0.01em;                                        
+            margin-bottom: -1em;
+            margin-left: 1.01em;                                       
         }
         thead{
                  display:none;

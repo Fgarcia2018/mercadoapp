@@ -71,6 +71,7 @@ function mostrarListaArticulos(lista,nomLista){
     const celdaDescripcion=document.createElement('td')    
     const celdaComprar=document.createElement('td')
     const celdaEstado=document.createElement('td')
+  
 
     datosTabla.appendChild(fila)
     fila.appendChild(encabezadoDescripcion)
@@ -79,22 +80,22 @@ function mostrarListaArticulos(lista,nomLista){
     fila.appendChild(celdaComprar)
     fila.appendChild(encabezadoEstado)
     fila.appendChild(celdaEstado)
+  
 
     encabezadoDescripcion.innerText='Descripción'
     celdaDescripcion.innerText=producto.descripcion     
     encabezadoComprar.innerText='Comprar'
     celdaComprar.innerText=producto.comprar
     encabezadoEstado.innerText='Estado'
-    celdaEstado.innerText=producto.estado
-    celdaEstado.style.backgroundColor='red'      
+    celdaEstado.innerText=producto.estado    
     
       celdaEstado.addEventListener('click',()=>{
         if (celdaEstado.innerText==='Pendiente'){
-          celdaEstado.innerText='OK'
-          celdaEstado.style.backgroundColor="green"
+          celdaEstado.innerHTML="<img src='assets/check.png'>"
+         
         }else{
           celdaEstado.innerText='Pendiente'
-          celdaEstado.style.backgroundColor="red"
+         
         }        
       })
 
