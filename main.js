@@ -32,6 +32,7 @@ let listaAlimentos=[
                     {descripcion:'Galletas', unidad:'kg', comprar:'Si',estado:'Pendiente'},
                     {descripcion:'Habichuelas', unidad:'kg', comprar:'Si',estado:'Pendiente'},
                     {descripcion:'Jamón', unidad:'kg', comprar:'Si',estado:'Pendiente'},
+                    {descripcion:'Lechuga', unidad:'kg', comprar:'Si', estado:'Pendiente'},  
                     {descripcion:'Mantequilla', unidad:'kg', comprar:'Si',estado:'Pendiente'},
                     {descripcion:'Mazorca', unidad:'kg', comprar:'Si',estado:'Pendiente'},
                     {descripcion:'Milo', unidad:'kg', comprar:'Si',estado:'Pendiente'},                    
@@ -40,6 +41,7 @@ let listaAlimentos=[
                     {descripcion:'Queso', unidad:'kg', comprar:'Si',estado:'Pendiente'},
                     {descripcion:'Salchicha Ranchera', unidad:'kg', comprar:'Si',estado:'Pendiente'},
                     {descripcion:'Sal', unidad:'kg', comprar:'Si', estado:'Pendiente'},  
+                    {descripcion:'Ullucos', unidad:'lb', comprar:'Si', estado:'Pendiente'},  
 
                     ]
 
@@ -47,9 +49,10 @@ let listaAlimentos=[
                       {descripcion:'Papel Cocina',unidad:'kg', comprar:'Si',estado:'Pendiente'},
                       {descripcion:'Servilletas', unidad:'kg', comprar:'Si', estado:'Pendiente'},
                       {descripcion:'Limpido', unidad:'lt', comprar:'Si',estado:'Pendiente'},
+                      {descripcion:'Pilas', unidad:'un', comprar:'Si',estado:'Pendiente'},  
                       {descripcion:'Jabón PURO', unidad:'Un', comprar:'Si', estado:'Pendiente'},                   
                       {descripcion:'Jabón COCO', unidad:'kg', comprar:'Si',estado:'Pendiente'},
-                      {descripcion:'Jabón líquido', unidad:'kg', comprar:'Si',estado:'Pendiente'},                    
+                      {descripcion:'Jabón líquido', unidad:'kg', comprar:'Si',estado:'Pendiente'},
   
                       ]                    
 
