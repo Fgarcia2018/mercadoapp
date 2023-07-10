@@ -9,7 +9,7 @@ h1{
 }
 
 .instrucciones{
-    font-size: 20px;
+    font-size: 30px;
 }
 
 table {
@@ -37,7 +37,7 @@ td img{
 .menu-mercado ul{
     list-style:  none;
     padding: 0 5px;
-    margin: 24px 0 0;
+    margin: 0;
     text-align: center;
 }
 
@@ -45,7 +45,7 @@ td img{
     position: absolute;
     width: 58%;
     background-color: white;
-    padding: 35px 20px;
+    padding: 39px 4px;
     border: 1px solid;
     border-radius: 0px 70px 70px 70px;
     
@@ -58,16 +58,49 @@ td img{
     font-size: 24px;
 
 }
+
+.menu-mercado li:hover{
+    background-color: lightblue;
+    border-radius: 5px 5px 5px 5px;
+}
+
+
+
 #btn-menu-mobile{
     width: 30px;
     height: 30px;
+}
+
+.tabla-agregar-articulo th{
+      padding-right: 16px;      
+}
+
+.tabla-agregar-articulo tr{
+    padding: 3rem 1rem 1rem 0rem;
+}
+
+#agregar,#actualizar{
+    width: 100px;
+    height: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: green;
+    color: white;
+    padding: 5px 5px 19px 5px;
+    text-align: center;
+}
+
+#respuesta{
+    font-size: 1.5rem;
+    color: green;
+    text-align: center;
 }
 
 @media screen and (max-device-width:830px){
 
         table {
             width:100%;
-            font-size: 22px;
+            font-size: 25px;
         }
         td, th{
             border:none;
@@ -75,8 +108,7 @@ td img{
         }
          tr{
             display:grid;
-            grid-template-columns: 1fr 1fr;        
-            /* border:1px solid #507C80; */
+            grid-template-columns: 1fr 1fr;     
             padding:1em;
             margin-bottom: -1em;
             margin-left: 1.01em;                                       
@@ -84,4 +116,12 @@ td img{
         thead{
                  display:none;
         }
+
+
+
+      
+
+        /* #button-agregar-articulo{
+                     
+        } */
     }
