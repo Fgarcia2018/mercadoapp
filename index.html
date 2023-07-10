@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabla de Productos</title>
+    <title>:::MerkalistApp:::</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+  
     
 </head>
 <body>
     <h1>Lista De Mercado 🖊</h1>
     <img src="assets/345386-200.svg" alt="menu icon" id="btn-menu-mobile">
-    <section class="menu-mercado inactive">
-        <h3>Selecciona la categoria</h3>
+    
+    
+    <section class="menu-mercado inactive">        
         <ul>
-            <li id="opc-alimentos">Alimentos 🍌🥑🥯</li>
-            <li id="opc-aseo">Aseo 🛁🚽🚻</li>          
+            <li id="opc-alimentos"> Lista Alimentos 🥗</li>
+            <li id="opc-aseo">Lista Aseo 🧼</li> 
+            <li id="opc-agregar-articulo">Agregar Articulo 🛒</li>          
         </ul>
     </section>
  
@@ -26,32 +29,38 @@
             <li>Pulsa en comprar para cambiar entre (si/no)</li>
             <li>Pulsa sobre el estado para cambiar de pendiente a listo</li>
         </ul>
- 
     
     <table class="tabla-alimentos">
-        <thead>
-            <tr>
-                <th>Descripción:</th>
-                <th>Unidad:</th>              
-                <th>Comprar:</th>
-                <th>Estado:</th>
-            </tr>
-        </thead>
         <tbody id="tbody-alimentos">           
         </tbody>
     </table>
     <table class="tabla-aseo inactive">
-        <thead>
-            <tr>
-                <th>Descripción:</th>
-                <th>Unidad:</th>              
-                <th>Comprar:</th>
-                <th>Estado:</th>
-            </tr>
-        </thead>
         <tbody id="tbody-aseo">           
         </tbody>
     </table>
+    <form id="formulario" method="post" enctype="multipart/form-data">
+    <table class="tabla-agregar-articulo inactive">
+      
+        <tbody id="tbody-agregar-articulo">   
+            <tr>
+                <th>Descripción</th>
+                <td><input type="text" name="descripcion" required> </td>
+                <th>Unidad</th>
+                <td><input type="text" name="unidad" required></td>
+                <th>Categoria</th>
+                <td><datalist id="categoria">
+                    <option value="alimento" label="alimento">
+                    <option value="aseo" label="aseo">                   
+                    </datalist>   
+                    <input type="text" name="categoria" id="categoria" list="categoria" required></td>
+                <!-- <td id="button-agregar-articulo" ><button type="submit" >Agregar</button></td>     -->
+                <td id="button-agregar-articulo" ><h3 id="agregar" >Guardar</h3></td>   
+                <td id="button-actualizar" ><h3 id="actualizar" >Actualizar</h3></td>
+            </tr>        
+        </tbody>
+    </table>
+    </form>
+    <div id="respuesta"></div>
     <script src="main.js"></script>
 </body>
 </html>
