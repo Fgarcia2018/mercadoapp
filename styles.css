@@ -95,6 +95,11 @@ td img{
     color: green;
     text-align: center;
 }
+input{
+    border: 1px solid green;
+    border-radius: 5px;
+    height: 20px;
+}
 
 @media screen and (max-device-width:830px){
 
