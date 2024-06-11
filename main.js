@@ -15,7 +15,7 @@ const buttonActualizar=document.querySelector('#actualizar')
 const form=document.querySelector('form')
 
 // Se guarda la url de la api con la lista de articulos
-const API='https://merkalistapp.000webhostapp.com/apiArticulos';
+const API='https://otherappinventario.000webhostapp.com/apiArticulos';
 
 // Se declaran arrays para almacenar datos de la api
 let listaArticulos=[]
