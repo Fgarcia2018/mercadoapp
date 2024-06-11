@@ -15,7 +15,7 @@ const buttonActualizar=document.querySelector('#actualizar')
 const form=document.querySelector('form')
 
 // Se guarda la url de la api con la lista de articulos
-const API='https://otherappinventario.000webhostapp.com/apiArticulos';
+const API='https://otherappinventario.000webhostapp.com/';
 
 // Se declaran arrays para almacenar datos de la api
 let listaArticulos=[]
@@ -68,7 +68,7 @@ function fetchData(API){
 // Codigo implementando async - await
  async function fetchingData(){
     // Se guarda la respuesta enviada por el servidor
-      const datosFetched=await fetchData(API)
+      const datosFetched=await fetchData(API+'apiArticulos')
       // Se obtiene el contenido JSON
       listaArticulos= await datosFetched.json()
       // Se filtran los articulos del array listaArticulos que pertenecen a la categoria alimento
@@ -229,7 +229,7 @@ butttonEnviar.onclick=e=>{
     }else{
       let fd=new FormData(formulario) 
       let enviarDatos=new XMLHttpRequest()
-      enviarDatos.open('POST','add.php')
+      enviarDatos.open('POST',API+'newArticulo.php')
       enviarDatos.onload=function(){
           if (enviarDatos.status==200){
             document.querySelector('#respuesta').innerHTML=JSON.parse(enviarDatos.responseText)  
