@@ -1,7 +1,10 @@
 <?php
-
-// header("Access-Control-Allow-Origin: *");
-// header("Content-Type: application/json; charset=UTF-8");
+// Cabeceras para permitir las peticiones desde el dominio en github y evitar bloqueos de politica CORS (Intercambio de Recursos de Origen Cruzado)
+header("Access-Control-Allow-Origin: https://fgarcia2018.github.io");
+header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Methods: POST,GET");
+header("Access-Control-Max-Age: 3600");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 class conexion{
     public static function conectar() {
