@@ -229,7 +229,7 @@ butttonEnviar.onclick=e=>{
     }else{
       let fd=new FormData(formulario) 
       let enviarDatos=new XMLHttpRequest()
-      enviarDatos.open('POST',API+'newArticulo.php')
+      enviarDatos.open('POST',API+'newarticulo/setarticulo')
       enviarDatos.onload=function(){
           if (enviarDatos.status==200){
             document.querySelector('#respuesta').innerHTML=JSON.parse(enviarDatos.responseText)  
