@@ -21,7 +21,7 @@ const API='https://otherappinventario.000webhostapp.com/';
 let listaArticulos=[]
 let listaAlimentos=[]
 let listaAseo=[]
-let listaAlimentosLs=[]
+let listaArticulosLs=[]
 
 // Codigo implementado el objeto XMLHttpRequest()
 
@@ -71,24 +71,24 @@ function fetchData(API){
     // Se guarda la respuesta enviada por el servidor
       const datosFetched=await fetchData(API+'apiArticulos')
 
-      listaAlimentosLs=JSON.parse(localStorage.getItem('Articulos'));
-      if (listaAlimentosLs==null){
+      listaArticulosLs=JSON.parse(localStorage.getItem('Articulos'));
+      if (listaArticulosLs==null){
         
       // Se obtiene el contenido JSON
         listaArticulos= await datosFetched.json()
         localStorage.setItem('Articulos',JSON.stringify(listaArticulos));
-        listaAlimentosLs=JSON.parse(localStorage.getItem('Articulos'));
+        listaArticulosLs=JSON.parse(localStorage.getItem('Articulos'));
       }
 
      
 
       // Se filtran los articulos del array listaArticulos que pertenecen a la categoria alimento
-      listaAlimentos=listaAlimentosLs.filter((listaAlimentosLs)=>{
-                return listaAlimentosLs.categoria==='alimento'
+      listaAlimentos=listaArticulosLs.filter((listaArticulosLs)=>{
+                return listaArticulosLs.categoria==='alimento'
               })  
       // Se filtran los articulos del array listaArticulos que pertenecen a la categoria aseo        
-      listaAseo=listaArticulos.filter((listaArticulos)=>{
-                        return listaArticulos.categoria==='aseo'
+      listaAseo=listaArticulosLs.filter((listaArticulosLs)=>{
+                        return listaArticulosLs.categoria==='aseo'
                       })    
       //Se muestran los articulos dependiendo de la categoria. 
       mostrarListaArticulos(listaAlimentos,'alimentos')  
@@ -167,9 +167,9 @@ function mostrarListaArticulos(lista,nomLista){
       celdaComprar.addEventListener('click',()=>{
         if (celdaComprar.innerText==='Si'){
           celdaComprar.innerText='No'  
-           listaAlimentos.find(alimento=>{
-            if (alimento.descripcion==fila.childNodes[1].textContent){
-              alimento.comprar='No'              
+           listaArticulosLs.find(articulo=>{
+            if (articulo.descripcion==fila.childNodes[1].textContent){
+              articulo.comprar='No'              
             }
           })                   
           celdaComprar.style.color='red'    
@@ -177,15 +177,15 @@ function mostrarListaArticulos(lista,nomLista){
           celdaComprar.innerText='Si' 
           celdaComprar.style.color='green' 
           
-         listaAlimentos.find(alimento=>{
-            if (alimento.descripcion==fila.childNodes[1].textContent){
-              alimento.comprar='Si'              
+         listaArticulosLs.find(articulo=>{
+            if (articulo.descripcion==fila.childNodes[1].textContent){
+              articulo.comprar='Si'              
             }
           })
          
         }   
         localStorage.removeItem('Articulos');
-        localStorage.setItem('Articulos',JSON.stringify(listaAlimentos));
+        localStorage.setItem('Articulos',JSON.stringify(listaArticulosLs));
                
       })
   }
