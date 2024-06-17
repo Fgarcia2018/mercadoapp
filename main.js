@@ -21,6 +21,7 @@ const API='https://otherappinventario.000webhostapp.com/';
 let listaArticulos=[]
 let listaAlimentos=[]
 let listaAseo=[]
+let listaAlimentosLs=[]
 
 // Codigo implementado el objeto XMLHttpRequest()
 
@@ -69,11 +70,21 @@ function fetchData(API){
  async function fetchingData(){
     // Se guarda la respuesta enviada por el servidor
       const datosFetched=await fetchData(API+'apiArticulos')
+
+      listaAlimentosLs=JSON.parse(localStorage.getItem('Articulos'));
+      if (listaAlimentosLs==null){
+        
       // Se obtiene el contenido JSON
-      listaArticulos= await datosFetched.json()
+        listaArticulos= await datosFetched.json()
+        localStorage.setItem('Articulos',JSON.stringify(listaArticulos));
+        listaAlimentosLs=JSON.parse(localStorage.getItem('Articulos'));
+      }
+
+     
+
       // Se filtran los articulos del array listaArticulos que pertenecen a la categoria alimento
-      listaAlimentos=listaArticulos.filter((listaArticulos)=>{
-                return listaArticulos.categoria==='alimento'
+      listaAlimentos=listaAlimentosLs.filter((listaAlimentosLs)=>{
+                return listaAlimentosLs.categoria==='alimento'
               })  
       // Se filtran los articulos del array listaArticulos que pertenecen a la categoria aseo        
       listaAseo=listaArticulos.filter((listaArticulos)=>{
@@ -134,7 +145,13 @@ function mostrarListaArticulos(lista,nomLista){
     celdaDescripcion.innerText=producto.descripcion     
     encabezadoComprar.innerText='Comprar'
     celdaComprar.innerText=producto.comprar
-    celdaComprar.style.color='red' 
+
+    if (celdaComprar.innerText=='Si'){
+            celdaComprar.style.color='green' 
+    }else{
+      celdaComprar.style.color='red' 
+    }
+
     encabezadoEstado.innerText='Estado'
     celdaEstado.innerText=producto.estado
     celdaEstado.style.color='red'    
@@ -150,11 +167,26 @@ function mostrarListaArticulos(lista,nomLista){
       celdaComprar.addEventListener('click',()=>{
         if (celdaComprar.innerText==='Si'){
           celdaComprar.innerText='No'  
-          celdaComprar.style.color='red'          
+           listaAlimentos.find(alimento=>{
+            if (alimento.descripcion==fila.childNodes[1].textContent){
+              alimento.comprar='No'              
+            }
+          })                   
+          celdaComprar.style.color='red'    
         }else{
           celdaComprar.innerText='Si' 
-          celdaComprar.style.color='green'         
-        }        
+          celdaComprar.style.color='green' 
+          
+         listaAlimentos.find(alimento=>{
+            if (alimento.descripcion==fila.childNodes[1].textContent){
+              alimento.comprar='Si'              
+            }
+          })
+         
+        }   
+        localStorage.removeItem('Articulos');
+        localStorage.setItem('Articulos',JSON.stringify(listaAlimentos));
+               
       })
   }
 }
