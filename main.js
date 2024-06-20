@@ -85,6 +85,7 @@ function fetchData(API){
         listaArticulos= await datosFetched.json()
         localStorage.setItem('Articulos',JSON.stringify(listaArticulos));
         listaArticulosLs=JSON.parse(localStorage.getItem('Articulos'));
+        
       }
 
      
@@ -226,7 +227,7 @@ function mostrarTablaAlimentos(){
     }else{
       menuMobile.classList.add('inactive')
     }
-    document.location.reload();
+    
 }
 
 function mostrarTablaAseo(){  
@@ -243,7 +244,7 @@ function mostrarTablaAseo(){
       } else{
         menuMobile.classList.add('inactive')
       }
-      document.location.reload();
+      
  }
 
  function mostrarFormularioArticulo(){  
@@ -301,6 +302,7 @@ butttonEnviar.onclick=e=>{
     })   
     updateArticles();
     enviarDatos.send(fd);
+    
     
     }
     
