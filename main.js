@@ -13,6 +13,7 @@ const butttonEnviar=document.querySelector('#agregar')
 const formulario=document.querySelector('#formulario')
 const buttonActualizar=document.querySelector('#actualizar')
 const form=document.querySelector('form')
+const mensaje= document.querySelector('#respuesta');
 
 // Se guarda la url de la api con la lista de articulos
 const API='https://otherappinventario.000webhostapp.com/';
@@ -47,6 +48,12 @@ let listaArticulosLs=[]
 
 
 // Funcion para implementar Fetch (para realizar peticiones asincronas con promesas, pero codigo más simple)
+
+const updateArticles=()=>{
+  localStorage.removeItem('Articulos');
+  localStorage.setItem('Articulos',JSON.stringify(listaArticulosLs));
+}
+
 function fetchData(API){
   return fetch(API)
 }
@@ -154,15 +161,29 @@ function mostrarListaArticulos(lista,nomLista){
 
     encabezadoEstado.innerText='Estado'
     celdaEstado.innerText=producto.estado
+    if (producto.estado==='ok'){
+      celdaEstado.innerHTML="<img src='assets/check.png'>";      
+    }
     celdaEstado.style.color='red'    
     
     // Se agregan escuchadores del evento click para que se muestre un color y un icono dependiendo de lo que elija el usuario 
       celdaEstado.addEventListener('click',()=>{
         if (celdaEstado.innerText==='Pendiente'){
           celdaEstado.innerHTML="<img src='assets/check.png'>"
+           listaArticulosLs.find(articulo=>{
+            if (articulo.descripcion==fila.childNodes[1].textContent){
+              articulo.estado='ok'              
+            }
+          })        
         }else{
           celdaEstado.innerText='Pendiente'
-        }        
+           listaArticulosLs.find(articulo=>{
+            if (articulo.descripcion==fila.childNodes[1].textContent){
+              articulo.estado='Pendiente'              
+            }
+          })        
+        }  
+      updateArticles();  
       })
       celdaComprar.addEventListener('click',()=>{
         if (celdaComprar.innerText==='Si'){
@@ -184,9 +205,9 @@ function mostrarListaArticulos(lista,nomLista){
           })
          
         }   
-        localStorage.removeItem('Articulos');
-        localStorage.setItem('Articulos',JSON.stringify(listaArticulosLs));
-               
+       updateArticles();
+       console.log(JSON.parse(localStorage.getItem('Articulos')));
+    
       })
   }
 }
@@ -201,6 +222,7 @@ function mostrarTablaAlimentos(){
         tablaAseo.classList.add('inactive')
         menuMobile.classList.add('inactive')
         tablaAgregarArticulo.classList.add('inactive')
+        mensaje.classList.add('inactive');
     }else{
       menuMobile.classList.add('inactive')
     }
@@ -215,6 +237,7 @@ function mostrarTablaAseo(){
           tablaAlimentos.classList.add('inactive')
           menuMobile.classList.add('inactive')
           tablaAgregarArticulo.classList.add('inactive')
+          mensaje.classList.add('inactive');
          
       } else{
         menuMobile.classList.add('inactive')
@@ -264,10 +287,19 @@ butttonEnviar.onclick=e=>{
       enviarDatos.open('POST',API+'newarticulo/setarticulo')
       enviarDatos.onload=function(){
           if (enviarDatos.status==200){
-            document.querySelector('#respuesta').innerHTML=JSON.parse(enviarDatos.responseText)  
+            mensaje.innerHTML=JSON.parse(enviarDatos.responseText)  
           }       
     }          
-    enviarDatos.send(fd)
+
+    listaArticulosLs.push({
+      descripcion:formulario.elements.descripcion.value,
+      unidad:formulario.elements.unidad.value,
+      categoria:formulario.elements.categoria.value,
+      comprar:'No',
+      estado:'Pendiente'
+    })   
+    updateArticles();
+    enviarDatos.send(fd);
     }
     
 }
