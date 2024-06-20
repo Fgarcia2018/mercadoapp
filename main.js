@@ -226,6 +226,7 @@ function mostrarTablaAlimentos(){
     }else{
       menuMobile.classList.add('inactive')
     }
+    document.location.reload();
 }
 
 function mostrarTablaAseo(){  
@@ -242,6 +243,7 @@ function mostrarTablaAseo(){
       } else{
         menuMobile.classList.add('inactive')
       }
+      document.location.reload();
  }
 
  function mostrarFormularioArticulo(){  
@@ -289,8 +291,7 @@ butttonEnviar.onclick=e=>{
           if (enviarDatos.status==200){
             mensaje.innerHTML=JSON.parse(enviarDatos.responseText)  
           }       
-    }          
-
+    }       
     listaArticulosLs.push({
       descripcion:formulario.elements.descripcion.value,
       unidad:formulario.elements.unidad.value,
@@ -300,6 +301,7 @@ butttonEnviar.onclick=e=>{
     })   
     updateArticles();
     enviarDatos.send(fd);
+    
     }
     
 }
