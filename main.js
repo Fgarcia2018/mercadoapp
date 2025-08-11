@@ -16,7 +16,7 @@ const form=document.querySelector('form')
 const mensaje= document.querySelector('#respuesta');
 
 // Se guarda la url de la api con la lista de articulos
-const API='https://otherappinventario.000webhostapp.com/';
+const API='https://warehouseproject.wuaze.com/mercado/';
 
 // Se declaran arrays para almacenar datos de la api
 let listaArticulos=[]
