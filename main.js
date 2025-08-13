@@ -16,7 +16,7 @@ const form=document.querySelector('form')
 const mensaje= document.querySelector('#respuesta');
 
 // Se guarda la url de la api con la lista de articulos
-const API='https://warehouseproject.wuaze.com/';
+const API='https://admin.servidev.com/';
 
 // Se declaran arrays para almacenar datos de la api
 let listaArticulos=[]
@@ -76,7 +76,7 @@ function fetchData(API){
 // Codigo implementando async - await
  async function fetchingData(){
     // Se guarda la respuesta enviada por el servidor
-      const datosFetched=await fetchData(API+'apiarticulos')
+      const datosFetched=await fetchData(API+'apiArticulos')
 
       listaArticulosLs=JSON.parse(localStorage.getItem('Articulos'));
       if (listaArticulosLs==null){
