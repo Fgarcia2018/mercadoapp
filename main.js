@@ -15,6 +15,12 @@ const buttonActualizar=document.querySelector('#actualizar')
 const form=document.querySelector('form')
 const mensaje= document.querySelector('#respuesta');
 
+btnmenu.addEventListener('click',mostrarMenuMobile)
+opcAlimentos.addEventListener('click',mostrarTablaAlimentos)
+opcAseo.addEventListener('click',mostrarTablaAseo)    
+opcAgregarArticulo.addEventListener('click',mostrarFormularioArticulo)    
+buttonActualizar.addEventListener('click',recargarPagina)     
+
 // Se guarda la url de la api con la lista de articulos
 const API='https://admin.servidev.com/';
 
@@ -24,30 +30,6 @@ let listaAlimentos=[]
 let listaAseo=[]
 let listaArticulosLs=[]
 
-// Codigo implementado el objeto XMLHttpRequest()
-
-// let ajax=new XMLHttpRequest()
-// ajax.open('GET','apiArticulos.php')
-//         ajax.onload=function(){
-//             if(ajax.status==200){                   
-//                    listaArticulos=JSON.parse(ajax.responseText)  
-//                     listaAlimentos=listaArticulos.filter((listaArticulos)=>{
-//                     return listaArticulos.categoria==='alimento'
-//                   })
-//                   listaAseo=listaArticulos.filter((listaArticulos)=>{
-//                     return listaArticulos.categoria==='aseo'
-//                   })
-//                   mostrarListaArticulos(listaAlimentos,'alimentos')  
-//                   mostrarListaArticulos(listaAseo,'aseo')
-                                
-//                 }else{
-//                     document.querySelector('#respuesta').innerHTML='Petición erronéa'
-//                 }
-//         }      
-// ajax.send()
-
-
-// Funcion para implementar Fetch (para realizar peticiones asincronas con promesas, pero codigo más simple)
 
 const updateArticles=()=>{
   localStorage.removeItem('Articulos');
@@ -58,62 +40,40 @@ function fetchData(API){
   return fetch(API)
 }
 
-// Se llama la funcion fetchData para almacenar los datos de la api en los correspondientes arrays
-// fetchData(API)
-// .then(response=>response.json())
-// .then(articulo=>{
-//   listaArticulos=articulo 
-//   listaAlimentos=listaArticulos.filter((listaArticulos)=>{
-//         return listaArticulos.categoria==='alimento'
-//       })
-//       listaAseo=listaArticulos.filter((listaArticulos)=>{
-//         return listaArticulos.categoria==='aseo'
-//       })    
-//       mostrarListaArticulos(listaAlimentos,'alimentos')  
-//       mostrarListaArticulos(listaAseo,'aseo') }  
-//       )
-
 // Codigo implementando async - await
- async function fetchingData(){
-    // Se guarda la respuesta enviada por el servidor
-      const datosFetched=await fetchData(API+'apiArticulos')
+ async function fetchingData(){    
+      const datosFetched=await fetchData(API+'apiArticulos');      
+      listaArticulos= await datosFetched.json();      
+    
+      if (localStorage.getItem('Articulos') === null){ 
 
-      listaArticulosLs=JSON.parse(localStorage.getItem('Articulos'));
-      if (listaArticulosLs==null){
+          localStorage.setItem('Articulos',JSON.stringify(listaArticulos));
+          listaArticulosLs=JSON.parse(localStorage.getItem('Articulos'));       
         
-      // Se obtiene el contenido JSON
-        listaArticulos= await datosFetched.json()
-        localStorage.setItem('Articulos',JSON.stringify(listaArticulos));
-        listaArticulosLs=JSON.parse(localStorage.getItem('Articulos'));
-        
-      }
 
-     
-
-      // Se filtran los articulos del array listaArticulos que pertenecen a la categoria alimento
-      listaAlimentos=listaArticulosLs.filter((listaArticulosLs)=>{
+      }else{       
+              console.log('Entró aquí');
+              
+             listaArticulosLs=JSON.parse(localStorage.getItem('Articulos'));
+           
+      }     
+        listaAlimentos=listaArticulosLs.filter((listaArticulosLs)=>{
                 return listaArticulosLs.categoria==='alimento'
-              })  
-      // Se filtran los articulos del array listaArticulos que pertenecen a la categoria aseo        
-      listaAseo=listaArticulosLs.filter((listaArticulosLs)=>{
+              });
+      
+            listaAseo=listaArticulosLs.filter((listaArticulosLs)=>{
                         return listaArticulosLs.categoria==='aseo'
-                      })    
-      //Se muestran los articulos dependiendo de la categoria. 
-      mostrarListaArticulos(listaAlimentos,'alimentos')  
-      mostrarListaArticulos(listaAseo,'aseo')
+                      });  
+      
+      
+      
+      mostrarListaArticulos(listaAlimentos,'alimentos');  
+      mostrarListaArticulos(listaAseo,'aseo');
  }        
 
- fetchingData()
-      
+ fetchingData();        
 
-// Se agregan los escuchadores de eventos
-btnmenu.addEventListener('click',mostrarMenuMobile)
-opcAlimentos.addEventListener('click',mostrarTablaAlimentos)
-opcAseo.addEventListener('click',mostrarTablaAseo)    
-opcAgregarArticulo.addEventListener('click',mostrarFormularioArticulo)    
-buttonActualizar.addEventListener('click',recargarPagina)              
 
-//Se muestran en una tabla los articulos dependiendo de la categoria, se pasan como argumentos el array y nombre de categoria del articulo
 function mostrarListaArticulos(lista,nomLista){ 
   let datosTabla
 
@@ -124,22 +84,18 @@ function mostrarListaArticulos(lista,nomLista){
   }
   for(producto of lista){
 
-    if (producto.comprar===0){
-      producto.comprar='No'
-    }
-    
-    // Se crea una fila por cada elemento del array
+    // if (producto.comprar===0){
+    //   producto.comprar='No'
+    // }
+        
     const fila=document.createElement('tr')  
-    // se agregan los encabezdos o titulos de la tabla
     const encabezadoDescripcion=document.createElement('th')
     const encabezadoComprar=document.createElement('th')
     const encabezadoEstado=document.createElement('th')
-    // Se agregan las celdas para que se muestren los datos del array
     const celdaDescripcion=document.createElement('td')    
     const celdaComprar=document.createElement('td')
     const celdaEstado=document.createElement('td')
-  
-    // Se asocian los encabezados y celdad a la fila
+     
     datosTabla.appendChild(fila)
     fila.appendChild(encabezadoDescripcion)
     fila.appendChild(celdaDescripcion)    
@@ -148,7 +104,6 @@ function mostrarListaArticulos(lista,nomLista){
     fila.appendChild(encabezadoEstado)
     fila.appendChild(celdaEstado)
   
-    // Se guardan los datos del array en su respectiva celda
     encabezadoDescripcion.innerText='Descripción'
     celdaDescripcion.innerText=producto.descripcion     
     encabezadoComprar.innerText='Comprar'
@@ -166,8 +121,8 @@ function mostrarListaArticulos(lista,nomLista){
       celdaEstado.innerHTML="<img src='assets/check.png'>";      
     }
     celdaEstado.style.color='red'    
-    
-    // Se agregan escuchadores del evento click para que se muestre un color y un icono dependiendo de lo que elija el usuario 
+   
+
       celdaEstado.addEventListener('click',()=>{
         if (celdaEstado.innerText==='Pendiente'){
           celdaEstado.innerHTML="<img src='assets/check.png'>"
@@ -287,10 +242,10 @@ butttonEnviar.onclick=e=>{
     }else{
       let fd=new FormData(formulario) 
       let enviarDatos=new XMLHttpRequest()
-      enviarDatos.open('POST',API+'newarticulo/setarticulo')
+      enviarDatos.open('POST',API+'articulo/setarticulos')
       enviarDatos.onload=function(){
           if (enviarDatos.status==200){
-            mensaje.innerHTML=JSON.parse(enviarDatos.responseText)  
+            mensaje.innerHTML=JSON.parse(enviarDatos.responseText);  
           }       
     }       
     listaArticulosLs.push({
