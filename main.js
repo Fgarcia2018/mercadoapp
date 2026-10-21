@@ -14,6 +14,8 @@ const formulario=document.querySelector('#formulario')
 const buttonActualizar=document.querySelector('#actualizar')
 const form=document.querySelector('form')
 const mensaje= document.querySelector('#respuesta');
+const tituloPorComprar=document.querySelector('#titulo-por-comprar');
+const tituloPendientes=document.querySelector('#titulo-pendientes');
 
 btnmenu.addEventListener('click',mostrarMenuMobile)
 opcAlimentos.addEventListener('click',mostrarTablaAlimentos)
@@ -34,6 +36,10 @@ let listaArticulosLs=[]
 const updateArticles=()=>{
   localStorage.removeItem('Articulos');
   localStorage.setItem('Articulos',JSON.stringify(listaArticulosLs));
+  tituloPorComprar.innerText='Por comprar: ';
+  tituloPendientes.innerText='Pendientes: ';
+  tituloPorComprar.innerText+=listaArticulosLs.filter(item=>item.comprar=='si').length;
+  tituloPendientes.innerText+=listaArticulosLs.filter(item=>item.estado=='Pendiente').length;
 }
 
 function fetchData(API){
@@ -82,11 +88,7 @@ function mostrarListaArticulos(lista,nomLista){
   }else{
      datosTabla=document.querySelector('#tbody-aseo')
   }
-  for(producto of lista){
-
-    // if (producto.comprar===0){
-    //   producto.comprar='No'
-    // }
+  for(producto of lista){  
         
     const fila=document.createElement('tr')  
     const encabezadoDescripcion=document.createElement('th')
@@ -109,7 +111,10 @@ function mostrarListaArticulos(lista,nomLista){
     encabezadoComprar.innerText='Comprar'
     celdaComprar.innerText=producto.comprar
 
-    if (celdaComprar.innerText=='Si'){
+    
+
+
+    if (celdaComprar.innerText=='si'){
             celdaComprar.style.color='green' 
     }else{
       celdaComprar.style.color='red' 
@@ -142,21 +147,21 @@ function mostrarListaArticulos(lista,nomLista){
       updateArticles();  
       })
       celdaComprar.addEventListener('click',()=>{
-        if (celdaComprar.innerText==='Si'){
-          celdaComprar.innerText='No'  
+        if (celdaComprar.innerText==='si'){
+          celdaComprar.innerText='no'  
            listaArticulosLs.find(articulo=>{
             if (articulo.descripcion==fila.childNodes[1].textContent){
-              articulo.comprar='No'              
+              articulo.comprar='no'              
             }
           })                   
           celdaComprar.style.color='red'    
         }else{
-          celdaComprar.innerText='Si' 
+          celdaComprar.innerText='si' 
           celdaComprar.style.color='green' 
           
          listaArticulosLs.find(articulo=>{
             if (articulo.descripcion==fila.childNodes[1].textContent){
-              articulo.comprar='Si'              
+              articulo.comprar='si'              
             }
           })
          
@@ -253,7 +258,7 @@ butttonEnviar.onclick=e=>{
       descripcion:formulario.elements.descripcion.value,
       unidad:formulario.elements.unidad.value,
       categoria:formulario.elements.categoria.value,
-      comprar:'No',
+      comprar:'no',
       estado:'Pendiente'
     })   
     updateArticles();
@@ -263,4 +268,6 @@ butttonEnviar.onclick=e=>{
     }
     
 }
+
+
 
