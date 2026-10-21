@@ -3,6 +3,16 @@ body{
     background-image:url('assets/marjan-blan-5Ft4NWTmeJE-unsplash.jpg');
     font-family: 'Caveat', cursive;   
 }
+.div-titulo{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+#titulo-por-comprar,#titulo-pendientes{
+    
+    /* display:inline; */
+}
 
 h1{
     text-align: center;
