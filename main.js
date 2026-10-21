@@ -231,7 +231,8 @@ function validarCampos(){
 }
 
 function recargarPagina(){
-  document.location.reload()
+  localStorage.removeItem('Articulos');
+  document.location.reload();
 }
 
 // Codigo para enviar datos a la api, implementando el objeto XMLHttpRequest
